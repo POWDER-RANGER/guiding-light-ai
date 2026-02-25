@@ -1,0 +1,23 @@
+[journal]
+path = ".guiding-light/journal.jsonl"
+
+[llm]
+enabled = true
+provider = "ollama"
+base_url = "http://localhost:11434/api"
+model = "gemma3"
+timeout_ms = 120000
+
+[[policy]]
+id = "conventional-commits"
+intent = ["commit_message"]
+type = "regex_require"
+pattern = "^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\\\\([^)]+\\\\))?(!)?: .+"
+message = "Commit message must follow Conventional Commits: <type>(<scope>)?: <description>"
+
+[[policy]]
+id = "no-exhausted-shipping"
+intent = ["commit_message", "pre_push", "reflect"]
+type = "keyword_block"
+keywords = ["exhausted", "burnt out", "burned out", "too tired", "can't think"]
+message = "If you're exhausted, slow down: journal the decision and ship safely (or rest)."
