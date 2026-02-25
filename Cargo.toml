@@ -1,0 +1,6 @@
+[package]
+name = "guiding-light"
+version = "0.1.0"
+edition = "2021"
+authors = ["POWDER-RANGER"]
+description = "Rust CLI that turns your values into enforceable policies: Git hooks + decision journal + optional LLM re
